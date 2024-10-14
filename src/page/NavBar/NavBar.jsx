@@ -1,8 +1,9 @@
 import React from "react";
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription  } from "@/components/ui/sheet";
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { DragHandleHorizontalIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
+import Sidebar from "./Sidebar";
 
 
 const NavBar = () => {
@@ -34,6 +35,7 @@ const NavBar = () => {
         </div>
       </SheetTitle>
     </SheetHeader>
+    <Sidebar/>
   </SheetContent>
 </Sheet>
 
