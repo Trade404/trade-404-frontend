@@ -1,13 +1,14 @@
-import './App.css'
-import NavBar from './page/NavBar'
+import NavBar from './page/NavBar/NavBar';
 
 function App() {
-
   return (
     <>
-    <NavBar/>
+      <NavBar />
+      <div className="bg-red-500 text-white p-4">
+        Tailwind CSS is working!
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
