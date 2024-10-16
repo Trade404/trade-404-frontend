@@ -29,7 +29,7 @@ const NavBar = () => {
                   <AvatarImage src="https://i.ebayimg.com/images/g/WroAAOSwKXti3ugj/s-l1600.webp"></AvatarImage>
               </Avatar>
               <div>
-                  <span className="font-bold">Trade404</span>
+                  <span className="font-bold">Trade 404</span>
               </div>
           </div>
         </SheetTitle>
@@ -38,7 +38,7 @@ const NavBar = () => {
     </SheetContent>
               </Sheet>
               <p className="text-sm lg:text-base cursor-pointer">
-                Trade404
+                Trade 404
               </p>
               <div className="p-0 ml-9">
                   <Button variant="outline"
