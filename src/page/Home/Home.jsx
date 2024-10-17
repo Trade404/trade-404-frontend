@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import AssetTable from "./AssetTable";
+import StockChart from "./StockChart";
 
 const Home = () => {
 
@@ -37,6 +38,9 @@ const Home = () => {
                     </div>
                     <AssetTable/>
 
+                </div>
+                <div className="hidden lg:block lg:w-[50%] p-5">
+                    <StockChart/>
                 </div>
             </div>
         </div>
