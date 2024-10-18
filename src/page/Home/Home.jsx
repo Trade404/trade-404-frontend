@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import AssetTable from "./AssetTable";
 import StockChart from "./StockChart";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { DotIcon } from "lucide-react";
 
 const Home = () => {
 
@@ -41,6 +43,30 @@ const Home = () => {
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
                     <StockChart/>
+                    <div className="flex gap-5 items-center">
+                        <div>
+                            <Avatar>
+                                <AvatarImage src={"https://assets.coingecko.com/coins/images/1/standard/bitcoin.png?1696501400"}/>
+                            </Avatar>
+                        </div>
+                        <div>
+                        <div className="flex items-center gap-2">
+                            <p>BTC</p>
+                            <DotIcon className="text-gray-400"/>
+                            <p className="text-gray-400">Bitcoin</p>
+                        </div>
+                        <div className="flex item-end gap-2">
+                            <p className="text-xl font-bold">
+                                68440
+                            </p>
+                            <p className="text-red-600">
+                                <span>-1397.451</span>
+                                <span>(-1.029147%)</span>
+                            </p>
+                            
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
