@@ -3,7 +3,7 @@ import React from "react";
 import AssetTable from "./AssetTable";
 import StockChart from "./StockChart";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { DotIcon } from "lucide-react";
+import { DotIcon, MessageCircle } from "lucide-react";
 
 const Home = () => {
 
@@ -69,6 +69,16 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <section className="absolute bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
+                <div className="relative w-[10rem] cursor-pointer group">
+                    <Button className="w-full h-[3rem] gap-2 items-center">
+                        <MessageCircle size={30} 
+                        className="fill-[#1e293b] -rotate-90 stroke-none group-hover:fill-[#1a1a1a]"
+                        />
+                        <span className="text-2xl">Chat Bot</span>
+                    </Button>
+                </div>
+            </section>
         </div>
     )
 }
