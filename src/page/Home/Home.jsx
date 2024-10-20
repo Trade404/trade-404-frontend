@@ -5,6 +5,7 @@ import StockChart from "./StockChart";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { DotIcon, MessageCircle } from "lucide-react";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { Input } from "@/components/ui/input";
 
 const Home = () => {
 
@@ -79,10 +80,30 @@ const Home = () => {
                         </Button>
                         </div>
                         <div className="h-[76%] flex flex-col overflow-y-auto gap-5 px-5 py-2 scroll-container">
-                            <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
-                                <p>Hi</p>
-                                <p>you can ask crypto related questions</p>
+                            <div className="self-start pb-5 w-auto">
+                                <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                                    <p>Hi</p>
+                                    <p>you can ask crypto related questions</p>
+                                </div> 
                             </div>
+                            {
+                                [1,1,1,1].map((item,i) =>   
+                            <div key={i} className={`${i % 2 === 0 ? "self-start" : "self-end"} pb-5 w-auto"`}>
+                                {i % 2 === 0 ? <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                                    <p>prompt</p>
+                                </div> : <div className="justify-end self-end px-5 py-2 rounded-md bg-slate-800 w-auto">
+                                    <p>answer</p>
+                                </div>  }  
+                            </div>)}
+                        </div>
+
+                        <div className="h-[12%] border-t">
+                            <Input className="w-full h-full border-none outline-none"
+                            placeholder="write prompt"
+                            onChange={handleChange}
+                            value={inputValue}
+                            onKeyPress={handleKeyPress}
+                            /> 
                         </div>
                     </div>
                 <div className="relative w-[10rem] cursor-pointer group">
