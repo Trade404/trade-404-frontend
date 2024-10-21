@@ -10,10 +10,24 @@ import { Input } from "@/components/ui/input";
 const Home = () => {
 
     const [category, setCategory] = React.useState("all")
+    const [inputValue, setInputValue] = React.useState("")
+    const [isChatOpened, setIsChatOpened] = React.useState(false)
 
     const handleCategory = (value) => {
         setCategory(value)
     }
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value)
+    }
+
+    const handleKeyPress = (event) => {
+        if(event.key == "Enter") console.log(inputValue);
+        setInputValue("")
+    }
+
+    const handleBotOpen = () => setIsChatOpened(!isChatOpened)
+
     return (
         <div className="relative">
             <div className="lg:flex">
@@ -71,11 +85,11 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <section className="absolute bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
+            {isChatOpened && <section className="absolute bottom-5 right-5 z-40 flex flex-col justify-end items-end gap-2">
                 <div className="rounded-md w-[20rem] md:w-[25rem] lg:w-[25rem] h-[70vh] bg-slate-900">
                     <div className="flex justify-between items-center border-b px-6 h-[12%]">                    
                         <p>Chat Bot</p>
-                        <Button variant="ghost" size="icon">
+                        <Button onClick={handleBotOpen} variant="ghost" size="icon">
                             <Cross1Icon/>
                         </Button>
                         </div>
@@ -107,14 +121,16 @@ const Home = () => {
                         </div>
                     </div>
                 <div className="relative w-[10rem] cursor-pointer group">
-                    <Button className="w-full h-[3rem] gap-2 items-center">
+                    <Button 
+                    onClick={handleBotOpen}
+                    className="w-full h-[3rem] gap-2 items-center">
                         <MessageCircle size={30} 
                         className="fill-[#1e293b] -rotate-90 stroke-none group-hover:fill-[#1a1a1a]"
                         />
                         <span className="text-2xl">Chat Bot</span>
                     </Button>
                 </div>
-            </section>
+            </section>}
         </div>
     )
 }
