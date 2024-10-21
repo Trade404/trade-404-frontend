@@ -1,7 +1,7 @@
 import React from "react";
 
 const Wallet = () => {
-    return ()
+    return (<div></div>)
 }
 
 export default Wallet

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Withdrawal = () => {
-    return ()
+    return (<div></div>)
 }
 
 export default Withdrawal

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Activity = () => {
-    return ()
+    return (<div></div>)
 }
 
 export default Activity

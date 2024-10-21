@@ -1,7 +1,7 @@
 import React from "react";
 
 const StockDetails = () => {
-    return ()
+    return (<div></div>)
 }
 
 export default StockDetails
