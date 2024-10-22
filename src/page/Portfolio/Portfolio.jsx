@@ -8,12 +8,11 @@ const Portfolio = () => {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                        <TableHead className="w-[100px]">Coin</TableHead>
+                        <TableHead className="w-[100px]">Asset</TableHead>
                         <TableHead>Price</TableHead>
                         <TableHead>Unit</TableHead>
                         <TableHead>Change</TableHead>
                         <TableHead>Change(%)</TableHead>
-                        <TableHead>Value</TableHead>
                         <TableHead className="text-right">Value</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -28,23 +27,10 @@ const Portfolio = () => {
                         </TableCell>
                         <TableCell>BTC</TableCell>
                         <TableCell>9126357982</TableCell>
+                        <TableCell>-503.41</TableCell>
                         <TableCell>-0.20009</TableCell>
-                        <TableCell>69544</TableCell>
                         <TableCell className="text-right">$69249</TableCell>
                         </TableRow>)}
-                        <TableRow>
-                        <TableCell className="font-medium flex items-center gap-2">
-                            <Avatar className="-z-50">
-                                <AvatarImage src="https://assets.coingecko.com/coins/images/1/standard/bitcoin.png?1696501400"/>
-                            </Avatar>
-                            <span>Bitcoin</span>
-                        </TableCell>
-                        <TableCell>BTC</TableCell>
-                        <TableCell>9126357982</TableCell>
-                        <TableCell>-0.20009</TableCell>
-                        <TableCell>69544</TableCell>
-                        <TableCell className="text-right">$69249</TableCell>
-                        </TableRow>
                     </TableBody>
                 </Table>
     </div>)
