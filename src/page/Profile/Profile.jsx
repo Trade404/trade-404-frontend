@@ -1,9 +1,17 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VerifiedIcon } from "lucide-react";
-import React from "react";
+import { Dialog,DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button";
+import AccountVerificationForm from "./AccountVerificationForm";
+  
 
 const Profile = () => {
+
+    const handleEnableTwoStepVerification = () => {
+        console.log("Two step verification")
+    }
+
     return (
     <div className="flex flex-col items-center mb-5">
         <div className="pt-10 w-full lg:w-[60%]">
@@ -67,6 +75,21 @@ const Profile = () => {
                             </Badge>}
                         </div>
                     </CardHeader>
+                    <CardContent>
+                        <div>
+                        <Dialog>
+                        <DialogTrigger>
+                            <Button>Enabled Two Step Verification</Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <DialogHeader>
+                            <DialogTitle>Verify your account</DialogTitle>
+                            </DialogHeader>
+                            <AccountVerificationForm handleSubmit={handleEnableTwoStepVerification}/>
+                        </DialogContent>
+                        </Dialog>
+                        </div>
+                    </CardContent>
                 </Card>
             </div>
         </div>
