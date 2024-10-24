@@ -1,4 +1,6 @@
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { VerifiedIcon } from "lucide-react";
 import React from "react";
 
 const Profile = () => {
@@ -50,6 +52,23 @@ const Profile = () => {
                     </div>
                 </CardContent>
             </Card>
+            <div className="mt-6">
+                <Card className="w-full">
+                    <CardHeader className="pb-7"> 
+                        <div className="flex items-center gap-3">
+                            <CardTitle>2 Step Verification</CardTitle>
+                            {true ? 
+                            <Badge className="space-x-2 text-white bg-green-600">
+                                <VerifiedIcon/>
+                                <span>Enabled</span>
+                            </Badge> :
+                            <Badge className="bg-orange-500">
+                                Disabled
+                            </Badge>}
+                        </div>
+                    </CardHeader>
+                </Card>
+            </div>
         </div>
     </div>
 )
