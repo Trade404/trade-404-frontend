@@ -1,5 +1,4 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button";
 import PaymentDetailsForm from "./PaymentDetailsForm";
@@ -9,7 +8,7 @@ const PaymentDetails = () => {
     return (
     <div className="px-20">
         <h1 className="text-3xl font-bold py-10">Payment Details</h1>
-        <Card>
+        {true ? <Card>
             <CardHeader>
                 <CardTitle>
                     IF Bank
@@ -28,8 +27,8 @@ const PaymentDetails = () => {
                     <p className="text-gray-400">: IFB0000008</p>
                 </div>
             </CardContent>
-        </Card>
-        <Dialog>
+                </Card> :
+                        <Dialog>
             <DialogTrigger>
                 <Button className="py-6">Add Payment Details</Button>
             </DialogTrigger>
@@ -39,7 +38,8 @@ const PaymentDetails = () => {
                 </DialogHeader>
                 <PaymentDetailsForm/>
             </DialogContent>
-        </Dialog>
+        </Dialog>}
+
 
     </div>
 )
