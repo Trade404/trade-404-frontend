@@ -11,11 +11,14 @@ import Profile from './page/Profile/Profile';
 import Watchlist from './page/Watchlist/Watchlist';
 import SearchCoin from './page/Search/SearchCoin';
 import Notfound from './page/Notfound/Notfound';
+import Auth from './page/Auth/Auth';
 
 
 function App() {
   return (
     <>
+    <Auth/>
+    {false && <div>
       <NavBar/>
       <Routes>
           <Route path="/" element={<Home/>} />
@@ -30,6 +33,8 @@ function App() {
           <Route path="/search" element={<SearchCoin/>} />
           <Route path="*" element={<Notfound/>} />
       </Routes>
+      </div>}
+
     </>
   );
 }
