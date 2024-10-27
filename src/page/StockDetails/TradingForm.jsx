@@ -54,12 +54,16 @@ const TradingForm = () => {
             </div>
             <div className="flex items-center justify-between">
                 <p>{orderType === "BUY" ? "Available Cash" : "Available Quantity" }</p>
+                <p>{orderType === "BUY" ? 9000 : 24.09 }</p>
             </div>
             <div>
-                <Button>
+                <Button className={`w-full py-6 ${orderType === "SELL" ? "bg-red-600 text-white" : ""}`}>
                     {orderType}
                 </Button>
-                <Button onClick={() => setOrderType(orderType === "BUY" ? "SELL" : "BUY")}>
+                <Button 
+                variant="link"
+                className="w-full mt-5 text-xl"
+                onClick={() => setOrderType(orderType === "BUY" ? "SELL" : "BUY")}>
                     {orderType === "BUY" ? "Or Sell" : "Or Buy"}
                 </Button>
             </div>
