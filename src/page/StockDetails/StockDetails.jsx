@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { BookmarkFilledIcon, BookmarkIcon, DotIcon } from "@radix-ui/react-icons";
 import React from "react";
 import TradingForm from "./TradingForm";
+import StockChart from "../Home/StockChart";
 
 const StockDetails = () => {
     return (
@@ -47,6 +48,9 @@ const StockDetails = () => {
                 </DialogContent>
                 </Dialog>
             </div>
+        </div>
+        <div className="mt-40">
+            <StockChart/> 
         </div>
     </div>)
 }
