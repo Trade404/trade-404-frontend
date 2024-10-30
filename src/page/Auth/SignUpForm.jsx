@@ -3,7 +3,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { register } from "state/auth/Action"
+import { register } from "@/state/auth/Action"
 
 const SignUpForm = () => {
     
