@@ -4,9 +4,14 @@ import { Button } from "@/components/ui/button";
 import { DragHandleHorizontalIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
+import { store } from "@/state/Store";
 
 
 const NavBar = () => {
+
+    const { auth } =useSelector(store => store)
+
     return(
         <div className="px-2 py-3 border-b z-50 bg-background bg-opacity-0 sticky top-0 left-0 right-0 flex justify-between items-center">
             <div className="flex items-center gap-3">
@@ -51,7 +56,7 @@ const NavBar = () => {
             <div>
               <Avatar>
                   <AvatarFallback>
-                      D
+                      {auth.user?.fullName[0].toUpperCase()}
                   </AvatarFallback>
               </Avatar>
             </div>
