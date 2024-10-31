@@ -5,7 +5,7 @@ export const register = (userData) => async(dispatch) => {
 
     dispatch({type:REGISTER_REQUEST})
 
-    const baseUrl = "http://localhost:4040/"
+    const baseUrl = "http://localhost:4040"
 
     try {
         const response =  await axios.post(`${baseUrl}/auth/signup`, userData)
@@ -25,7 +25,7 @@ export const login = (userData) => async(dispatch) => {
 
     dispatch({type:LOGIN_REQUEST})
 
-    const baseUrl = "http://localhost:4040/"
+    const baseUrl = "http://localhost:4040"
 
     try {
         const response =  await axios.post(`${baseUrl}/auth/signin`, userData)
@@ -45,7 +45,7 @@ export const getUser = (jwt) => async(dispatch) => {
 
     dispatch({type:GET_USER_REQUEST})
 
-    const baseUrl = "http://localhost:4040/"
+    const baseUrl = "http://localhost:4040"
 
     try {
         const response =  await axios.get(`${baseUrl}/api/users/profile`, {
