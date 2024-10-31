@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
+import { GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT, REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
 
 export const register = (userData) => async(dispatch) => {
 
@@ -65,4 +65,9 @@ export const getUser = (jwt) => async(dispatch) => {
         console.log(error)
     }
     
+}
+
+export const logout = () => (dispatch) => {
+    localStorage.clear()
+    dispatch({ type: LOGOUT})
 }
