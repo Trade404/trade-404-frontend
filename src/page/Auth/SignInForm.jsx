@@ -4,12 +4,15 @@ import { Input } from "@/components/ui/input"
 import { login } from "@/state/auth/Action"
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
 
 
 const SignInForm = () => {
     
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const form = useForm({
         resolver:"",
         defaultValues:{
@@ -20,7 +23,7 @@ const SignInForm = () => {
     })
 
     const onSubmit = (data) => {
-        dispatch(login(data))
+        dispatch(login({data, navigate}))
         console.log(data)
     }
     return (

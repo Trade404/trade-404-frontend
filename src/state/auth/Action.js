@@ -29,12 +29,13 @@ export const login = (userData) => async(dispatch) => {
     const baseUrl = "http://localhost:4040"
 
     try {
-        const response =  await axios.post(`${baseUrl}/auth/signin`, userData)
+        const response =  await axios.post(`${baseUrl}/auth/signin`, userData.data)
         const user = response.data
         console.log(user)
 
         dispatch({type:LOGIN_SUCCESS, payload:user.jwt})
         localStorage.setItem('jwt', user.jwt)
+        userData.navigate('/')
 
     } catch(error) {
         dispatch({type:LOGIN_FAILURE, payload:error.message})
