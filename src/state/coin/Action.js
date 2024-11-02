@@ -20,7 +20,7 @@ export const getCoinList = (page) => async(dispatch) => {
     
 }
 
-export const getTop50CoinsList= (pae) => async(dispatch) => {
+export const getTop50CoinsList= () => async(dispatch) => {
 
     dispatch({type:FETCH_TOP_50_COINS_REQUEST})
 
