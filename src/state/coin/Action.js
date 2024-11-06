@@ -73,6 +73,21 @@ export const fetchCoinById= (coinId) => async(dispatch) => {
     }
 }
 
+export const searchCoin= (keyword) => async(dispatch) => {
+
+    dispatch({type:SEARCH_COIN_REQUEST})
+
+    try {
+        const response =  await api.get(`${API_BASE_URL}/coins/${keyword}`)
+        dispatch({type:SEARCH_COIN_SUCCESS, payload:response.data})
+        console.log(response.data)
+
+    } catch(error) {
+        dispatch({type:SEARCH_COIN_FAILURE, payload:error.message})
+        console.log(error)
+    }
+}
+
 export const fetchCoinDetails= (coinId) => async(dispatch) => {
 
     dispatch({type:FETCH_COIN_DETAILS_REQUEST})
@@ -88,18 +103,4 @@ export const fetchCoinDetails= (coinId) => async(dispatch) => {
     }
 }
 
-export const searchCoin= (keyword) => async(dispatch) => {
-
-    dispatch({type:SEARCH_COIN_REQUEST})
-
-    try {
-        const response =  await api.get(`${API_BASE_URL}/coins/${keyword}`)
-        dispatch({type:SEARCH_COIN_SUCCESS, payload:response.data})
-        console.log(response.data)
-
-    } catch(error) {
-        dispatch({type:SEARCH_COIN_FAILURE, payload:error.message})
-        console.log(error)
-    }
-}
 
