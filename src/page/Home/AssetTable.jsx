@@ -1,13 +1,14 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import React from "react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const AssetTable = () => {
+const AssetTable = ({coin, category}) => {
+
 
   const navigate = useNavigate()
 
-    return (
+  return (
         <Table>
   <TableHeader>
     <TableRow>
@@ -20,7 +21,7 @@ const AssetTable = () => {
     </TableRow>
   </TableHeader>
   <TableBody>
-    {[1,1,1,1,1,1].map((item, index) =>     
+    {coin.map((item, index) =>     
     <TableRow key={index}>
       <TableCell onClick={() => navigate('/market/bitcoin/')} 
       className="font-medium flex items-center gap-2">
