@@ -22,19 +22,19 @@ const AssetTable = ({coin, category}) => {
   </TableHeader>
   <TableBody>
     {coin.map((item, index) =>     
-    <TableRow key={index}>
+    <TableRow key={item.id}>
       <TableCell onClick={() => navigate('/market/bitcoin/')} 
       className="font-medium flex items-center gap-2">
         <Avatar className="-z-50">
-            <AvatarImage src="https://assets.coingecko.com/coins/images/1/standard/bitcoin.png?1696501400"/>
+            <AvatarImage src={item.image}/>
         </Avatar>
-        <span>Bitcoin</span>
+        <span>{item.name}</span>
       </TableCell>
-      <TableCell>BTC</TableCell>
-      <TableCell>9126357982</TableCell>
-      <TableCell>-0.20009</TableCell>
-      <TableCell>69544</TableCell>
-      <TableCell className="text-right">$69249</TableCell>
+      <TableCell>{item.symbol}</TableCell>
+      <TableCell>{item.total_volume}</TableCell>
+      <TableCell>{item.market_cap }</TableCell>
+      <TableCell>{item.price_change_percentage_24h}</TableCell>
+      <TableCell className="text-right">{item.current_price}</TableCell>
     </TableRow>)}
     <TableRow>
       <TableCell className="font-medium flex items-center gap-2">
