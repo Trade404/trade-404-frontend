@@ -7,7 +7,7 @@ import { DotIcon, MessageCircle } from "lucide-react";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
-import { getCoinList } from "@/state/coin/Action";
+import { getCoinList, getTop50CoinsList } from "@/state/coin/Action";
 import { store } from "@/state/Store";
 
 const Home = () => {
@@ -33,6 +33,10 @@ const Home = () => {
     const handleBotOpen = () => setIsChatOpened(!isChatOpened)
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getTop50CoinsList())
+    },[category])
 
     useEffect(() => {
         dispatch(getCoinList(1))
@@ -63,7 +67,7 @@ const Home = () => {
                         Top Losers
                         </Button>
                     </div>
-                    <AssetTable coin={coin.coinList} category={category}/>
+                    <AssetTable coin={category === 'all' ? coin.coinList : coin.top50} category={category}/>
 
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
