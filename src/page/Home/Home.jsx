@@ -8,7 +8,6 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoinList, getTop50CoinsList } from "@/state/coin/Action";
-import { store } from "@/state/Store";
 
 const Home = () => {
 

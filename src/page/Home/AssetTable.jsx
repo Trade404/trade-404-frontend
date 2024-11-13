@@ -1,4 +1,5 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +10,8 @@ const AssetTable = ({coin, category}) => {
   const navigate = useNavigate()
 
   return (
-        <Table>
+<Table>
+  <ScrollArea className={`${category === 'all' ? 'h-[74vh]' : 'h-[82vh]'}`}>
   <TableHeader>
     <TableRow>
       <TableHead className="w-[100px]">Coin</TableHead>
@@ -37,6 +39,7 @@ const AssetTable = ({coin, category}) => {
       <TableCell className="text-right">{item.current_price}</TableCell>
     </TableRow>)}
   </TableBody>
+  </ScrollArea>
 </Table>
 
     )
