@@ -18,6 +18,7 @@ const StockDetails = () => {
     useEffect(() => {
         dispatch(fetchCoinDetails({coinId:id, jwt:localStorage.getItem("jwt")}))
     },[id])
+
     return (
     <div className="p-5 mt-5">
         <div className="flex justify-between">
@@ -61,7 +62,7 @@ const StockDetails = () => {
             </div>
         </div>
         <div className="mt-40">
-            <StockChart/> 
+            <StockChart coinId={id}/> 
         </div>
     </div>)
 }
