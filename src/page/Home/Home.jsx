@@ -70,7 +70,7 @@ const Home = () => {
 
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
-                    <StockChart/>
+                    <StockChart coinId={'bitcoin'}/>
                     <div className="flex gap-5 items-center">
                         <div>
                             <Avatar>
