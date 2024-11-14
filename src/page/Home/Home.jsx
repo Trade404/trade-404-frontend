@@ -8,6 +8,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoinList, getTop50CoinsList } from "@/state/coin/Action";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
 const Home = () => {
 
@@ -67,7 +68,24 @@ const Home = () => {
                         </Button>
                     </div>
                     <AssetTable coin={category === 'all' ? coin.coinList : coin.top50} category={category}/>
-
+                <div>
+                    <Pagination>
+                    <PaginationContent>
+                        <PaginationItem>
+                        <PaginationPrevious href="#" />
+                        </PaginationItem>
+                        <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                        <PaginationEllipsis />
+                        </PaginationItem>
+                        <PaginationItem>
+                        <PaginationNext href="#" />
+                        </PaginationItem>
+                    </PaginationContent>
+                    </Pagination>
+                </div>
                 </div>
                 <div className="hidden lg:block lg:w-[50%] p-5">
                     <StockChart coinId={'bitcoin'}/>
