@@ -1,48 +1,20 @@
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import { fetchMarketChart } from "@/state/coin/Action";
+import { store } from "@/state/Store";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
+import { useDispatch, useSelector } from "react-redux";
 
-const StockChart = () => {
+const StockChart = ({coinId}) => {
+
+    const dispatch = useDispatch()
+    const {coin} = useSelector(store => store)
 
     const[activeLable, setActiveLable] = useState("1 day")
 
     const series = [
         {
-            data:[[1726586765619, 61231.6212971013],
-            [1726589249396, 61202.0196856892],
-            [1726592419953, 60970.2534814402],
-            [1726596483383, 60976.8573746607],
-            [1726600341842, 60563.4158309977],
-            [1726604299992, 59973.9506205091],
-            [1726608548124, 60375.0369547322],
-            [1726612102530, 60174.66622544],
-            [1726615649414, 60155.6441169595],
-            [1726618946634, 60061.8848560052],
-            [1726622554412, 60163.8347221741],
-            [1726624983472, 60124.0662274937],
-            [1726628581414, 60367.1263825379],
-            [1726632758090, 60514.1231812518],
-            [1726636092885, 60355.3951320565],
-            [1726640170567, 60320.4225226327],
-            [1726644413525, 60342.1244329161],
-            [1726647237996, 60238.9024854893],
-            [1726650359655, 60194.6557237078],
-            [1726654336099, 59781.9595156652],
-            [1726658939003, 59982.6674609518],
-            [1726660948020, 59871.9295202455],
-            [1726665406743, 59865.6348093028],
-            [1726668843117, 59450.8514452217],
-            [1726673326804, 59511.0262480518],
-            [1726676467770, 59520.595946066],
-            [1726679845914, 59602.2947321903],
-            [1726683114527, 60171.9338572356],
-            [1726687149489, 60678.6222292116],
-            [1726689809462, 60033.6269679482],
-            [1726694799757, 60334.7197558385],
-            [1726698617981, 60481.0679804467],
-            [1726702124514, 61165.471218698],
-            [1726704161765, 61826.7176130281],
-            [1726708611601, 61852.9392877189]]
+            data:coin.marketChart.data
         }
     ]
 
@@ -114,6 +86,10 @@ const StockChart = () => {
     const handleActiveLable = (value) => {
         setActiveLable(value)
     }
+
+    useEffect(() => {
+        dispatch(fetchMarketChart({coinId, days:30, jwt:localStorage.getItem('jwt')}))
+    },[dispatch, coinId, activeLable])
     return (
         <div>
             <div className="space-x-3">
