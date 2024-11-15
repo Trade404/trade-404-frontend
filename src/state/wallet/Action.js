@@ -50,7 +50,7 @@ export const getWalletTransactions = ({jwt}) => async (dispatch) => {
 }
 
 export const depositMoney = ({jwt, orderId, paymentId, navigate}) => async (dispatch) => {
-    dispatch({type: types.DEPOSIT_MONEY__REQUEST})
+    dispatch({type: types.DEPOSIT_MONEY_REQUEST})
 
     try {
         const response = await api.put('/api/wallet/deposit', null, {
@@ -64,7 +64,7 @@ export const depositMoney = ({jwt, orderId, paymentId, navigate}) => async (disp
         })
         
         dispatch({
-            type: types.DEPOSIT_MONEY__SUCCESS,
+            type: types.DEPOSIT_MONEY_SUCCESS,
             payload: response.data
        })
        navigate('/wallet')
@@ -72,7 +72,36 @@ export const depositMoney = ({jwt, orderId, paymentId, navigate}) => async (disp
     } catch (error) {
         console.log(error)
         dispatch({
-            type: types.DEPOSIT_MONEY__FAILURE,
+            type: types.DEPOSIT_MONEY_FAILURE,
+            error: error.message
+        })
+    }
+    
+}
+
+export const paymentHandler = ({jwt, amount, paymentMethod}) => async (dispatch) => {
+    dispatch({type: types.DEPOSIT_MONEY_REQUEST})
+
+    try {
+        const response = await api.post(`/api/payment/${paymentMethod}/amount/${amount}`, null, {
+            params: {
+                order_id: orderId,
+                payment_id: paymentId
+            },
+            headers: {
+                Authorization: `Bearer ${jwt}`
+            }
+        })
+        
+        window.location.href = response.data.payment_url
+        dispatch({
+            type: types.DEPOSIT_MONEY_SUCCESS,
+            payload: response.data
+       })
+    } catch (error) {
+        console.log(error)
+        dispatch({
+            type: types.DEPOSIT_MONEY_FAILURE,
             error: error.message
         })
     }
