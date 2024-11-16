@@ -107,3 +107,30 @@ export const paymentHandler = ({jwt, amount, paymentMethod}) => async (dispatch)
     }
     
 }
+
+export const transferMoney = ({jwt, walletId, reqData}) => async (dispatch) => {
+    dispatch({type: types.TRANSFER_MONEY_REQUEST})
+
+    try {
+        const response = await api.put(`/api/wallet/${walletId}/transfer`, 
+        reqData,
+            {   
+                headers: {
+                Authorization: `Bearer ${jwt}`
+                }
+            }
+        )
+        
+        dispatch({
+            type: types.TRANSFER_MONEY_SUCCESS,
+            payload: response.data
+       })
+    } catch (error) {
+        console.log(error)
+        dispatch({
+            type: types.TRANSFER_MONEY_FAILURE,
+            error: error.message
+        })
+    }
+    
+}
