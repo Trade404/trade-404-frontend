@@ -3,13 +3,28 @@ import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 import { ReloadIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { CopyIcon, DollarSign, ShuffleIcon, UploadIcon, WalletIcon } from "lucide-react";
-import React from "react";
+import { useEffect } from "react";
 import TopUpForm from "./TopUpForm";
 import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserWallet } from "@/state/wallet/Action";
+import { store } from "@/state/Store";
 
 const Wallet = () => {
+
+    const dispatch = useDispatch();
+    const { wallet } = useSelector(stor => store)
+
+    useEffect(() => {
+        handleFetchUserWallet();
+    },[])
+
+    const handleFetchUserWallet = () => {
+        dispatch(getUserWallet(localStorage.getItem('jwt')))
+    }
+
     return (
     <div className="flex flex-col items-center">
         <div className="pt-10 w-full lg:w-[60%]">
