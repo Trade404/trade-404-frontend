@@ -1,4 +1,4 @@
-import api from '@Api/api'
+import { api } from '@/config/api'
 import * as types from './ActionTypes'
 
 export const getUserWallet = (jwt) => async (dispatch) => {
