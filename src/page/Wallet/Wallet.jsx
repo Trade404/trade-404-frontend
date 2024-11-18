@@ -9,17 +9,37 @@ import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserWallet } from "@/state/wallet/Action";
+import { depositMoney, getUserWallet } from "@/state/wallet/Action";
 import { store } from "@/state/Store";
+import { useLocation, useNavigate } from "react-router-dom";
+
+function useQuery(){
+    return new URLSearchParams(useLocation().search)
+}
 
 const Wallet = () => {
 
     const dispatch = useDispatch();
-    const { wallet } = useSelector(stor => store)
+    const { wallet } = useSelector(store => store)
+    const query = useQuery()
+    const orderId = query.get('order_id')
+    const paymentId = query.get('payment_id')
+    const razorpayPaymentId = query.get('razorpay_payment_id')
+    const navigate = useNavigate()
 
     useEffect(() => {
         handleFetchUserWallet();
     },[])
+
+    useEffect(() => {
+        if(orderId){
+            dispatch(depositMoney({jwt: localStorage.getItem('jwt'),
+                orderId,
+                paymentId: razorpayPaymentId || paymentId,
+                navigate
+            }))
+        }
+    },[orderId, paymentId, razorpayPaymentId])
 
     const handleFetchUserWallet = () => {
         dispatch(getUserWallet(localStorage.getItem('jwt')))
@@ -45,7 +65,7 @@ const Wallet = () => {
                             </div>
                         </div>
                         <div>
-                            <ReloadIcon className="w-6 h-6 cursor-pointer 
+                            <ReloadIcon onClick={handleFetchUserWallet} className="w-6 h-6 cursor-pointer 
                             hover:text-gray-400" />
                         </div>
                     </div>
@@ -53,9 +73,7 @@ const Wallet = () => {
                 <CardContent>
                     <div className="flex items-center">
                         <DollarSign/>
-                        <span className="text-2xl font-semibold">
-                            20000
-                        </span>
+                        <span className="text-2xl font-semibold">${wallet.userWallet.balance}</span>
                     </div>
                     <div className="flex gap-7 mt-5">
                         <Dialog>
