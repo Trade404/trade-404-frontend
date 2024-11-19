@@ -9,8 +9,7 @@ import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { depositMoney, getUserWallet } from "@/state/wallet/Action";
-import { store } from "@/state/Store";
+import { depositMoney, getUserWallet, getWalletTransactions } from "@/state/wallet/Action";    
 import { useLocation, useNavigate } from "react-router-dom";
 
 function useQuery(){
@@ -29,6 +28,7 @@ const Wallet = () => {
 
     useEffect(() => {
         handleFetchUserWallet();
+        handleFetchWalletTransaction()
     },[])
 
     useEffect(() => {
@@ -43,6 +43,10 @@ const Wallet = () => {
 
     const handleFetchUserWallet = () => {
         dispatch(getUserWallet(localStorage.getItem('jwt')))
+    }
+
+    const handleFetchWalletTransaction = () => {
+        dispatch(getWalletTransactions({jwt: localStorage.getItem('jwt')}))
     }
 
     return (
@@ -138,22 +142,22 @@ const Wallet = () => {
                     <UpdateIcon className="h-7 w-7 p-0 cursor-pointer hover:text-gray-400"/>
                 </div>
                 <div className="space-y-5">
-                    {[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((item, i) => 
+                    {wallet.transactions.map((item, i) => 
                                         <div key={i}>
                                         <Card className="px-5 flex justify-between items-center p-2">
                                             <div className="flex items-center gap-5">
-                                                <Avatar>
+                                                <Avatar onClick={handleFetchWalletTransaction}>
                                                     <AvatarFallback>
                                                         <ShuffleIcon />
                                                     </AvatarFallback>
                                                 </Avatar>
                                                 <div className="space-y-1">
-                                                    <h1>Buy Asset</h1>
-                                                    <p className="text-sm text-gray-500">2024-10-24</p>
+                                                    <h1>{item.type || item.purpose}</h1>
+                                                    <p className="text-sm text-gray-500">{item.date}</p>
                                                 </div>
                                             </div>
                                             <div>
-                                                <p className={`text-green-500`}>999 USD</p>
+                                                <p className={`text-green-500`}>{item.amount} USD</p>
                                             </div>
                                         </Card>
                                     </div>  )}
