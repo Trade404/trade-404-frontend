@@ -1,5 +1,5 @@
 import { api } from "@/config/api"
-import { GET_WITHDRAWAL_HISTORY_FAILURE, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_HISTORY_SUCCESS, GET_WITHDRAWAL_REQUEST_FAILURE, GET_WITHDRAWAL_REQUEST_REQUEST, GET_WITHDRAWAL_REQUEST_SUCCESS, WITHDRAWAL_FAILURE, WITHDRAWAL_PROCEED_FAILURE, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
+import { ADD_PAYMENT_DETAILS_FAILURE, ADD_PAYMENT_DETAILS_REQUEST, ADD_PAYMENT_DETAILS_SUCCESS, GET_PAYMENT_DETAILS_FAILURE, GET_PAYMENT_DETAILS_SUCCESS, GET_WITHDRAWAL_HISTORY_FAILURE, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_HISTORY_SUCCESS, GET_WITHDRAWAL_REQUEST_FAILURE, GET_WITHDRAWAL_REQUEST_REQUEST, GET_WITHDRAWAL_REQUEST_SUCCESS, WITHDRAWAL_FAILURE, WITHDRAWAL_PROCEED_FAILURE, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
 
 export const withdrawalRequest = ({amount, jwt}) => async dispatch => {
     dispatch({ type: WITHDRAWAL_REQUEST })
@@ -89,6 +89,52 @@ export const getAllWithdrawalRequest = jwt => async dispatch => {
         console.log(error)
         dispatch({
             type: GET_WITHDRAWAL_REQUEST_FAILURE,
+            payload: error.message
+        })
+    }
+}
+
+export const addPaymentDetails = ({paymentDetails, jwt}) => async dispatch => {
+    dispatch({ type: ADD_PAYMENT_DETAILS_REQUEST })
+
+    try {
+        const response = await api.post(`/api/payment-details`, paymentDetails, {
+            headers: {
+                Authorization: `Bearer ${jwt}`
+            }
+        })
+        
+        dispatch({
+            type: ADD_PAYMENT_DETAILS_SUCCESS,
+            payload: response.data
+       })
+    } catch (error) {
+        console.log(error)
+        dispatch({
+            type: ADD_PAYMENT_DETAILS_FAILURE,
+            payload: error.message
+        })
+    }
+}
+
+export const getPaymentDetails = ({jwt}) => async dispatch => {
+    dispatch({ type: GET_PAYMENT_DETAILS_SUCCESS })
+
+    try {
+        const response = await api.get(`/api/payment-details`,{
+            headers: {
+                Authorization: `Bearer ${jwt}`
+            }
+        })
+        
+        dispatch({
+            type: GET_PAYMENT_DETAILS_SUCCESS,
+            payload: response.data
+       })
+    } catch (error) {
+        console.log(error)
+        dispatch({
+            type: GET_PAYMENT_DETAILS_FAILURE,
             payload: error.message
         })
     }
