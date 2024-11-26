@@ -1,4 +1,6 @@
-import { ADD_PAYMENT_DETAILS_SUCCESS, GET_PAYMENT_DETAILS_SUCCESS, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_REQUEST_REQUEST, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
+import { request } from "http";
+import { ADD_PAYMENT_DETAILS_SUCCESS, GET_PAYMENT_DETAILS_SUCCESS, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_REQUEST_REQUEST, GET_WITHDRAWAL_REQUEST_SUCCESS, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
+import { error } from "console";
 
 const withdrawalReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -34,6 +36,14 @@ const withdrawalReducer = (state = initialState, action) => {
                 }),
                 loading: false,
                 error: null
+            }
+        case GET_WITHDRAWAL_REQUEST_SUCCESS:
+            return {
+                ...state,
+                requests: action.payload,
+                loading: false,
+                error: null
+            };
             }
     }
 }
