@@ -1,5 +1,5 @@
 import { request } from "http";
-import { ADD_PAYMENT_DETAILS_SUCCESS, GET_PAYMENT_DETAILS_SUCCESS, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_REQUEST_REQUEST, GET_WITHDRAWAL_REQUEST_SUCCESS, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
+import { ADD_PAYMENT_DETAILS_SUCCESS, GET_PAYMENT_DETAILS_SUCCESS, GET_WITHDRAWAL_HISTORY_FAILURE, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_REQUEST_FAILURE, GET_WITHDRAWAL_REQUEST_REQUEST, GET_WITHDRAWAL_REQUEST_SUCCESS, WITHDRAWAL_FAILURE, WITHDRAWAL_PROCEED_FAILURE, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
 import { error } from "console";
 
 const withdrawalReducer = (state = initialState, action) => {
@@ -44,6 +44,17 @@ const withdrawalReducer = (state = initialState, action) => {
                 loading: false,
                 error: null
             };
+        case WITHDRAWAL_FAILURE:
+        case WITHDRAWAL_PROCEED_FAILURE:
+        case GET_WITHDRAWAL_HISTORY_FAILURE:
+        case GET_WITHDRAWAL_REQUEST_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
             }
+        default: 
+            return state
+            }
+            
     }
-}
