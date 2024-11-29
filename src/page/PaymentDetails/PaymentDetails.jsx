@@ -2,13 +2,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button";
 import PaymentDetailsForm from "./PaymentDetailsForm";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getPaymentDetails } from "@/state/withdrawal/Action";
   
 
 const PaymentDetails = () => {
+
+    const {withdrawal} = useSelector(store => store)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getPaymentDetails({jwt: localStorage.getItem('jwt')}))
+    },[])
+
     return (
     <div className="px-20">
         <h1 className="text-3xl font-bold py-10">Payment Details</h1>
-        {true ? <Card>
+        {withdrawal.paymentDetails ? <Card>
             <CardHeader>
                 <CardTitle>
                     IF Bank
