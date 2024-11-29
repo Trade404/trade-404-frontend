@@ -1,6 +1,13 @@
-import { request } from "http";
 import { ADD_PAYMENT_DETAILS_SUCCESS, GET_PAYMENT_DETAILS_SUCCESS, GET_WITHDRAWAL_HISTORY_FAILURE, GET_WITHDRAWAL_HISTORY_REQUEST, GET_WITHDRAWAL_REQUEST_FAILURE, GET_WITHDRAWAL_REQUEST_REQUEST, GET_WITHDRAWAL_REQUEST_SUCCESS, WITHDRAWAL_FAILURE, WITHDRAWAL_PROCEED_FAILURE, WITHDRAWAL_PROCEED_REQUEST, WITHDRAWAL_PROCEED_SUCCESS, WITHDRAWAL_REQUEST, WITHDRAWAL_SUCCESS } from "./ActionTypes"
-import { error } from "console";
+
+const initialState = {
+    withdrawal: null,
+    history: [],
+    loading: false,
+    error: null,
+    PaymentDetails: null,
+    requests: []
+} 
 
 const withdrawalReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -58,3 +65,5 @@ const withdrawalReducer = (state = initialState, action) => {
             }
             
     }
+
+    export default withdrawalReducer 
