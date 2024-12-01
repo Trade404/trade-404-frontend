@@ -25,17 +25,17 @@ const PaymentDetails = () => {
                     IF Bank
                 </CardTitle>
                 <CardDescription>
-                    ************5271
+                A/C No : {withdrawal.paymentDetails?.accountNumber}
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="flex items-center">
                     <p className="w-32">Account Holder</p>
-                    <p className="text-gray-400">: DS</p>
+                    <p className="text-gray-400">: {withdrawal.paymentDetails?.accountHolderName}</p>
                 </div>
                 <div className="flex items-center">
                     <p className="w-32">IFSC</p>
-                    <p className="text-gray-400">: IFB0000008</p>
+                    <p className="text-gray-400">: {withdrawal.paymentDetails?.bankName}</p>
                 </div>
             </CardContent>
                 </Card> :
