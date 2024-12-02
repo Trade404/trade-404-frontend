@@ -8,7 +8,7 @@ const WithdrawalForm = () => {
 
     const [amount, setAmount] = React.useState("")
     const dispatch = useDispatch();
-    const { wallet } = useSelector(store => store)
+    const { wallet, withdrawal } = useSelector(store => store)
 
     const handleChange = (e) => {
         setAmount(e.target.value)
@@ -45,8 +45,8 @@ const WithdrawalForm = () => {
                 src="https://cdn.pixabay.com/photo/2020/02/18/11/03/bank-4859142_1280.png"
                 />
                 <div>
-                    <p className="text-xl font-bold">Yes Bank</p>
-                    <p className="text-xs">************4249</p>
+                    <p className="text-xl font-bold">{withdrawal.paymentDetails?.bankName}</p>
+                    <p className="text-xs">{withdrawal.paymentDetails?.accountNumber}</p>
                 </div>
             </div>
         </div>
