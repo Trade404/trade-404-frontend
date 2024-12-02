@@ -1,6 +1,7 @@
  import { Button } from "@/components/ui/button";
 import { DialogClose } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { withdrawalRequest } from "@/state/withdrawal/Action";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,6 +12,7 @@ const WithdrawalForm = () => {
     const { wallet, withdrawal } = useSelector(store => store)
 
     const handleChange = (e) => {
+        dispatch(withdrawalRequest({amount, jwt: localStorage.getItem('jwt')}))
         setAmount(e.target.value)
     }
 
