@@ -34,7 +34,7 @@ const Withdrawal = () => {
       <TableCell>Bank Account</TableCell>
       <TableCell>${item.amount}</TableCell>
       <TableCell className="text-right">
-      {item.status}
+      {item.history}
       </TableCell>
     </TableRow>)}
   </TableBody>
