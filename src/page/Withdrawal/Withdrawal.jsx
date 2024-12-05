@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Withdrawal = () => {
 
   const dispatch = useDispatch()
-  const { wallet, Withdrawal } = useSelector(store => store)
+  const { wallet, withdrawal } = useSelector(store => store)
 
   useEffect(() => {
     dispatch(getWIthdrawalHistory(localStorage.getItem('jwt')))
@@ -34,7 +34,7 @@ const Withdrawal = () => {
       <TableCell>Bank Account</TableCell>
       <TableCell>${item.amount}</TableCell>
       <TableCell className="text-right">
-      {item.history}
+      {item.status}
       </TableCell>
     </TableRow>)}
   </TableBody>
